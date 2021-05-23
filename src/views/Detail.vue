@@ -1,9 +1,16 @@
 <template>
   <div class="container">
-    <div class="card bg-dark text-white mb-3">
-      <img :src="photo.url" class="card-img" :alt="photo.title">
-      <div class="card-img-overlay">
-        <h1 class="card-title">{{ photo.title }}</h1>
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-6">
+          <img :src="photo.url" :alt="photo.title">
+        </div>
+        <div class="col-md-6">
+          <div class="card-body">
+            <h2 class="card-title title">{{ photo.title }}</h2>
+            <i class="card-text title"><small class="text-muted">This photo has number of album is {{ photo.albumId }}</small></i>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -25,8 +32,18 @@ export default {
 </script>
 
 <style scoped>
-img{
-  height: 600px;
-  width: 600px;
-}
+  img{
+    height: 600px;
+    width: 600px;
+    transition: .2s;
+  }
+
+  img:hover{
+    transform: scale(0.95);
+  }
+
+  .title{
+    display: flex;
+    margin-left: 50px;
+  }
 </style>
