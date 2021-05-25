@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     photos: [],
-    photo: {}
+    photo: {},
+    sortingPhotos: []
   },
   mutations: {
     SET_PHOTOS (state, payload) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     SET_PHOTO (state, payload) {
       state.photo = payload
+    },
+    SET_SORTING_PHOTOS (state, payload) {
+      state.sortingPhotos = payload
     }
   },
   actions: {
@@ -34,6 +38,16 @@ export default new Vuex.Store({
         method: 'GET'
       }).then(({ data }) => {
         context.commit('SET_PHOTO', data)
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    setSortingPhotosAsync (context, payload) {
+      axios({
+        url: `/photos/sorting-by/${+payload}`,
+        method: 'GET'
+      }).then(({ data }) => {
+        context.commit('SET_SORTING_PHOTOS', data)
       }).catch(err => {
         console.log(err)
       })

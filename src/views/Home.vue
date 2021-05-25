@@ -1,7 +1,7 @@
 <template>
   <div class="container text-center">
     <h2>Photos Collections</h2>
-    <Loading v-if="!photos"/>
+    <Loading v-if="!photos.length"/>
     <div class="row row-cols-1 row-cols-md-6 g-4">
       <div v-for="photo in photos" :key="photo.id" class="col">
         <div class="h-100">
